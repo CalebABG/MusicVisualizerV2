@@ -11,7 +11,7 @@ Yes, yes, I know! Unlike the previous version, for now, V2 will only ship the co
 <br/>
 <br/>
 
-Apologies for the inconvenience! The quickest way to get your ```.jar``` is to package the project. Take a look at the [Maven Tools](#Maven Tools) section below. I will try to figure out a way to get you the application not just the source!
+Apologies for the inconvenience! The quickest way to get your ```.jar``` is to package the project. Take a look at the [Maven Tools](#Maven-Tools) section below. I will try to figure out a way to get you the application not just the source!
 
 ---
 
@@ -54,5 +54,5 @@ Please feel free to fork and submit bug fixes or feature requests!
 
 ---
 
-### Closing Comments
+## Closing Comments
 Thank you for checking out my work/experiment! I'll be pushing updates to this project as often as I can. Please feel free to fork or port this to other languages! Have fun and keep on creating!
