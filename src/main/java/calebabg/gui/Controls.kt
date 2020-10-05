@@ -97,86 +97,89 @@ object Controls {
         //.setWidth(295)
 
         /*Soundcloud Tab */
-
-        cp5.addTab(controlsTabKey)
-                .setHeight(25)
-                .setColorLabel(visRef.get()!!.color(255))
-                .setColorActive(visRef.get()!!.color(255, 128, 0))
-                .setCaptionLabel(controlsTabCaption).captionLabel.font = sliderFont
-
-
-        val soundcloudTracksGroup = cp5.addGroup("search")
-                .setHeight(25)
-                .setBackgroundHeight(150)
-
-        soundcloudTracksGroup.captionLabel.font = sliderFont
-        soundcloudTracksGroup.captionLabel.align(CENTER, CENTER)
-
-        val soundcloudAccordion = cp5.addAccordion("soundcloudAcc")
-                .setPosition(1f, 30f)
-                .setWidth(slw.toInt())
-                .addItem(soundcloudTracksGroup)
-                .moveTo(soundCloudTabKey)
+        if (SoundCloudApiHelper.hasClientId()) {
+            cp5.addTab(controlsTabKey)
+                    .setHeight(25)
+                    .setColorLabel(visRef.get()!!.color(255))
+                    .setColorActive(visRef.get()!!.color(255, 128, 0))
+                    .setCaptionLabel(controlsTabCaption).captionLabel.font = sliderFont
 
 
-        cp5.addTextlabel("textfield-label")
-                .setText("Press 'Ctrl+V' to Paste a SoundCloud URL, or Enter One")
-                .setPosition(0f, 10f)
-                .setFont(tabCaptionLabelFont)
-                .moveTo(soundcloudTracksGroup)
+            val soundcloudTracksGroup = cp5.addGroup("search")
+                    .setHeight(25)
+                    .setBackgroundHeight(150)
 
-        soundCloudTextField = cp5.addTextfield("input")
-                .setLabel("")
-                .setPosition(2f, 35f)
-                .setSize(400, 30)
-                .setFont(textFieldFont)
-                .setColor(visRef.get()!!.color(255))
-                .moveTo(soundcloudTracksGroup)
+            soundcloudTracksGroup.captionLabel.font = sliderFont
+            soundcloudTracksGroup.captionLabel.align(CENTER, CENTER)
 
-        createButton(soundcloudTracksGroup, "paste-link", 1f, 75f, 120f, 25f).addListener { controlEvent ->
-            run {
-                visRef.get()!!.pasteSoundCloudUrl()
-            }
-        }
+            val soundcloudAccordion = cp5.addAccordion("soundcloudAcc")
+                    .setPosition(1f, 30f)
+                    .setWidth(slw.toInt())
+                    .addItem(soundcloudTracksGroup)
+                    .moveTo(soundCloudTabKey)
 
-        createButton(soundcloudTracksGroup, "get-songs", 125f, 75f, 120f, 25f).addListener { controlEvent ->
-            GlobalScope.launch {
-                visRef.get()!!.searchSoundCloudTracks()
-            }
-        }
 
-        createButton(soundcloudTracksGroup, "clear", 250f, 75f, 120f, 25f).addListener { controlEvent ->
-            run {
-                synchronized(soundCloudTextField){
-                    soundCloudTextField.clear()
+            cp5.addTextlabel("textfield-label")
+                    .setText("Press 'Ctrl+V' to Paste a SoundCloud URL, or Enter One")
+                    .setPosition(0f, 10f)
+                    .setFont(tabCaptionLabelFont)
+                    .moveTo(soundcloudTracksGroup)
+
+            soundCloudTextField = cp5.addTextfield("input")
+                    .setLabel("")
+                    .setPosition(2f, 35f)
+                    .setSize(400, 30)
+                    .setFont(textFieldFont)
+                    .setColor(visRef.get()!!.color(255))
+                    .moveTo(soundcloudTracksGroup)
+
+            createButton(soundcloudTracksGroup, "paste-link", 1f, 75f, 120f, 25f).addListener { controlEvent ->
+                run {
+                    visRef.get()!!.pasteSoundCloudUrl()
                 }
             }
+
+            createButton(soundcloudTracksGroup, "get-songs", 125f, 75f, 120f, 25f).addListener { controlEvent ->
+                GlobalScope.launch {
+                    visRef.get()!!.searchSoundCloudTracks()
+                }
+            }
+
+            createButton(soundcloudTracksGroup, "clear", 250f, 75f, 120f, 25f).addListener { controlEvent ->
+                run {
+                    synchronized(soundCloudTextField) {
+                        soundCloudTextField.clear()
+                    }
+                }
+            }
+
+            fetchingTracksLabel = cp5.addTextlabel("loading-track")
+                    .setText("Ready")
+                    .setPosition(380f, 80f)
+                    .setFont(tabCaptionLabelFont)
+                    .moveTo(soundcloudTracksGroup)
+
+
+            cp5.getTab(musicQueueTabKey)
+                    .setColorActive(visRef.get()!!.color(255, 128, 0))
+                    .setHeight(25)
+                    .setId(1)
+                    .setCaptionLabel(musicQueueTabCaption).captionLabel.font = sliderFont
+
+            cp5.getTab(soundCloudTabKey)
+                    .setId(2)
+
+            cp5.addTab(soundCloudTabKey)
+                    .setHeight(25)
+                    .setColorLabel(visRef.get()!!.color(255))
+                    .setColorActive(visRef.get()!!.color(255, 128, 0))
+                    .setCaptionLabel(soundcloudTabCaption).captionLabel.font = sliderFont
+
+            soundcloudAccordion.open()
         }
 
-        fetchingTracksLabel = cp5.addTextlabel("loading-track")
-                .setText("Ready")
-                .setPosition(380f, 80f)
-                .setFont(tabCaptionLabelFont)
-                .moveTo(soundcloudTracksGroup)
 
-
-        cp5.getTab(musicQueueTabKey)
-                .setColorActive(visRef.get()!!.color(255, 128, 0))
-                .setHeight(25)
-                .setId(1)
-                .setCaptionLabel(musicQueueTabCaption).captionLabel.font = sliderFont
-
-        cp5.getTab(soundCloudTabKey)
-                .setId(2)
-
-        /*Song queue tab*/
-
-        cp5.addTab(soundCloudTabKey)
-                .setHeight(25)
-                .setColorLabel(visRef.get()!!.color(255))
-                .setColorActive(visRef.get()!!.color(255, 128, 0))
-                .setCaptionLabel(soundcloudTabCaption).captionLabel.font = sliderFont
-
+        /*Music queue tab*/
         cp5.getTab(musicQueueTabKey)
                 .setId(0)
                 .activateEvent(true)
@@ -259,7 +262,6 @@ object Controls {
 
         musicQueueAccordion.open()
         controlsAccordion.open()
-        soundcloudAccordion.open()
     }
 
     /**
