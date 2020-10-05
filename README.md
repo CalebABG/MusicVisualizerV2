@@ -6,12 +6,10 @@ V2 brings a much better codebase and more ease for addition, and will only impro
 
 ---
 
-## What? No Jar??
-Yes, yes, I know! Unlike the previous version, for now, V2 will only ship the code base. To protect the ```ClientId``` which SoundCloud uses to authenticate requests to its API, the best way (I've found for now) from it being decompiled out of the ```.jar``` is to set an environment variable and retrieve it at run time.
+## Releases?
+Yes, yes, I know! Unlike the previous version, for now, V2 releases of the ```.jar``` will be a stand-alone player. SoundCloud integration will be hidden unless a valid SoundCloud ```ClientId``` is set via environment variable. 
 
-<br/>
-
-Apologies for the inconvenience! The quickest way to get your ```.jar``` is to package the project. Take a look at the [Maven Tools](#Maven-Tools) section below. I will try to figure out a way to get you the application not just the source!
+To protect the ```ClientId``` which SoundCloud uses to authenticate requests to its API, the best way (I've found for now) from it being decompiled out of the ```.jar``` is to set an environment variable and retrieve it at run time.
 
 ---
 
