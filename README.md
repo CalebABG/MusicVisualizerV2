@@ -7,7 +7,7 @@ V2 brings a much better codebase and more ease for addition, and will only impro
 ---
 
 ## What? No Jar??
-Yes, yes, I know! Unlike the previous version, for now, V2 will only ship the codebase. To protect the ```ClientId``` which SoundCloud uses to authenticate requests to its API, the only way to protect it (to my knowledge for now) from being decompiled out of the ```.jar``` is to read it in from a file at runtime.
+Yes, yes, I know! Unlike the previous version, for now, V2 will only ship the code base. To protect the ```ClientId``` which SoundCloud uses to authenticate requests to its API, the best way (I've found for now) from it being decompiled out of the ```.jar``` is to set an environment variable and retrieve it at run time.
 
 <br/>
 
