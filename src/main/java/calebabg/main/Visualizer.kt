@@ -5,6 +5,7 @@ import calebabg.abstractions.UriAudioSource
 import calebabg.gui.Controls
 import calebabg.gui.InstructionsWindow
 import calebabg.gui.MVUILogger
+import calebabg.helpers.Utils
 import calebabg.soundcloud.Playlist
 import calebabg.soundcloud.SoundCloudApiHelper
 import calebabg.soundcloud.Track
@@ -155,10 +156,11 @@ class Visualizer : PApplet() {
         if (key == 'm') toggleMute()
         if (key == 'n') playNextSongInQueue()
 
-        if (key == 'p') pasteSoundCloudUrl()
         if (key == 'q') EventQueue.invokeLater { InstructionsWindow.getInstance(null) }
 
         if (key == 's') toggleBackground()
+
+        if (keyEvent.isControlDown && keyCode == KeyEvent.VK_V) pasteSoundCloudUrl()
         if (key == 'v') addToMusicQueue(Utils.selectMusicFromGui())
 
         if (key == 'x') changeVisual()
@@ -275,7 +277,7 @@ class Visualizer : PApplet() {
     /* Methods for AudioPlayer & Music Queue */
     private fun getAudioFromSoundCloudTrack(track: Track): UriAudioSource {
         val trackId = track.id.toString()
-        val trackTitle = track.title.take(titleLength)
+        val trackTitle = track.title
         val trackMediaPath = track.streamUrl
 
         return UriAudioSource(trackId, trackTitle, trackMediaPath)
@@ -285,7 +287,7 @@ class Visualizer : PApplet() {
     fun addToMusicQueue(audioResources: ArrayList<IAudioResource>?) {
         if (!audioResources.isNullOrEmpty()) {
             for (audioElement in audioResources) {
-                addToMusicQueue(audioElement.title(), audioElement)
+                addToMusicQueue(audioElement.title().take(titleLength), audioElement)
             }
 
             /*set selected song index*/

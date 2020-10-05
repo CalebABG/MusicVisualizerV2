@@ -3,13 +3,13 @@ package calebabg.soundcloud;
 import calebabg.abstractions.IAudioResource;
 import calebabg.abstractions.LocalAudioSource;
 import calebabg.abstractions.UriAudioSource;
-import calebabg.main.Utils;
+import calebabg.helpers.Utils;
 import com.google.gson.Gson;
 import kong.unirest.*;
 import org.json.JSONObject;
 
 public class SoundCloudApiHelper {
-    private static final String CLIENT_ID = Utils.Companion.getHtml("/token.txt", 256);
+    private static final String CLIENT_ID = Utils.Companion.getSecret("MVSCTOKEN");
     private static final String SOUNDCLOUD_API_RESOLVE_URL = "https://api.soundcloud.com/resolve?url=";
 
     private static final Gson gson = new Gson();
@@ -79,9 +79,9 @@ public class SoundCloudApiHelper {
     private static JsonNode resolve(String resourceUrl) {
         String resolveApiEnd = "&client_id=";
         String api = SOUNDCLOUD_API_RESOLVE_URL + resourceUrl + resolveApiEnd + CLIENT_ID;
-        System.out.println(api);
+        //System.out.println(api);
 
-        final JsonNode[] jsonResponse = {null};
+        JsonNode[] jsonResponse = {null};
 
         Unirest.get(api).thenConsume(rawResponse -> {
             var future = Unirest.get(rawResponse.getHeaders().getFirst("Location"))
@@ -111,5 +111,9 @@ public class SoundCloudApiHelper {
         }
 
         return url;
+    }
+
+    public static boolean hasClientId() {
+        return !CLIENT_ID.isEmpty();
     }
 }

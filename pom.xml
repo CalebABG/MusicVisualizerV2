@@ -184,7 +184,6 @@
                         <configuration>
                             <archive>
                                 <manifest>
-<!--                                    <mainClass>calebabg.test.Test</mainClass>-->
                                     <mainClass>calebabg.main.Main</mainClass>
                                 </manifest>
                             </archive>

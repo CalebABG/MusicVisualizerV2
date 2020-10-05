@@ -1,8 +1,12 @@
-package calebabg.main
+package calebabg.helpers
 
 import calebabg.abstractions.IAudioResource
 import calebabg.abstractions.LocalAudioSource
 import calebabg.gui.MVUILogger
+import calebabg.main.audioFormats
+import calebabg.main.maxVal
+import calebabg.main.minVal
+import calebabg.main.titleLength
 import ddf.minim.analysis.FFT
 import org.apache.commons.io.FilenameUtils
 import java.awt.FileDialog
@@ -82,6 +86,12 @@ open class Utils {
             return htmlString
         }
 
+        fun getSecret(secretName: String): String {
+            var secret = System.getenv(secretName)
+            if (secret == null) secret = ""
+            return secret
+        }
+
         fun selectMusicFromGui(title: String = "Select Music..."): ArrayList<IAudioResource>? {
             setLookAndFeel()
 
@@ -96,7 +106,7 @@ open class Utils {
             if (fileList.isNotEmpty()) {
                 audioList = ArrayList()
                 fileList.forEach {
-                    val mediaTitle = FilenameUtils.getBaseName(it.name).take(titleLength)
+                    val mediaTitle = FilenameUtils.getBaseName(it.name)
                     val mediaPath = it.absolutePath
 
                     val localAudioResource = LocalAudioSource(mediaTitle, mediaPath)

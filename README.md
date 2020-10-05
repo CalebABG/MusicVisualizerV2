@@ -8,7 +8,7 @@ V2 brings a much better codebase and more ease for addition, and will only impro
 
 ## What? No Jar??
 Yes, yes, I know! Unlike the previous version, for now, V2 will only ship the codebase. To protect the ```ClientId``` which SoundCloud uses to authenticate requests to its API, the only way to protect it (to my knowledge for now) from being decompiled out of the ```.jar``` is to read it in from a file at runtime.
-<br/>
+
 <br/>
 
 Apologies for the inconvenience! The quickest way to get your ```.jar``` is to package the project. Take a look at the [Maven Tools](#Maven-Tools) section below. I will try to figure out a way to get you the application not just the source!
@@ -24,10 +24,28 @@ Java JDK + IntelliJ + Kotlin
 #### The codebase is an IntelliJ IDEA project, so I'd recommend using [IntelliJ IDEA](https://www.jetbrains.com/idea/). This project also uses [Kotlin](https://kotlinlang.org/?fromMenu), which is an incredible language! I'd also recommend using the ```AdoptOpenJDK 12 or higher```: [AdoptOpenJDK - Windows, Mac, Linux](https://adoptopenjdk.net/releases.html?variant=openjdk12&jvmVariant=hotspot)
 
 ### Project Needed Setup
-1. Add ```SoundCloud``` token:
-    - Create a file called ```token.txt``` in the following folder: ```/src/main/resources/``` that just includes your SoundCloud ```ClientId``` 
 
-2. If using [IntelliJ IDEA](https://www.jetbrains.com/idea/) IDE, when opening the project, hit the popup about the ```pom.xml``` file that says something like: ```Add as Maven Project```
+#### SoundCloud ```ClientId``` Token:
+- To avoid the token being packaged into the ```.jar``` during the Maven package Lifecycle, for now, I thought setting an environment variable would be the best way to secure the token.
+
+- I've created a convenience scripts for setting the environment variable! In a terminal window change into the ```tools``` folder of this repo, then execute the script for your OS:
+    - Note: Replace ```<client-id>``` with your actual SoundCloud ClientId
+
+#### For Windows
+1. ```
+   ./tokenhelper.ps1 <client-id>
+   ```
+
+#### For Mac and Linux
+1. ```python
+   ./tokenhelper.sh <client-id>
+   ```
+   1. Note: If you mess up setting the token, you'll need to manually edit your ```.bashrc``` file to correct the export value
+
+2. And Boom! You should be all set to go!
+
+#### Maven Setup
+- If using [IntelliJ IDEA](https://www.jetbrains.com/idea/) IDE, when opening the project, hit the popup about the ```pom.xml``` file that says something like: ```Add as Maven Project```
     - This will make sure IntelliJ recognizes the project as being a Maven project!
 
 ### Maven Tools
@@ -41,6 +59,15 @@ Java JDK + IntelliJ + Kotlin
 
 Create an ```issue``` for the repo if you encounter any errors or strange behavior/functionality with the application. 
 Please feel free to fork and submit bug fixes or feature requests!
+
+---
+
+## Errors / Gotchas?
+1. If you're using IntelliJ, if you happen to get this exception: ```NoClassFoundException - Main```, try the following:
+    1. Close the project
+    2. In the root of the repo, delete the ```.idea``` folder (this is the folder IntelliJ uses for the IDE)
+    3. Re-open the project in IntelliJ and then rebuild and debug
+    4. Hopefully that fixes that exception, if not please open an issue for it.
 
 ---
 

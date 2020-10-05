@@ -1,6 +1,6 @@
 package calebabg.gui
 
-import calebabg.main.Utils
+import calebabg.helpers.Utils
 import calebabg.main.iconImage
 import javax.swing.*
 import java.awt.*

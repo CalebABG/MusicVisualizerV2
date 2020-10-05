@@ -1,6 +1,5 @@
-package calebabg.main.pojo
+package calebabg.pojo
 
-import calebabg.main.bassKick
 import calebabg.main.ellipseR
 import calebabg.main.starSpeed
 import processing.core.PApplet

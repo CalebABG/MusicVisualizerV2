@@ -1,8 +1,10 @@
 package calebabg.gui
 
 import calebabg.helpers.MusicQueue
+import calebabg.helpers.Utils
 import processing.core.PConstants.CENTER
 import calebabg.main.*
+import calebabg.soundcloud.SoundCloudApiHelper
 import controlP5.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -83,8 +85,8 @@ object Controls {
         val controlsTabKey = "controls"
 
         //captions
-        val controlsTabCaption = "controls"
-        val musicQueueTabCaption = "song queue"
+        val controlsTabCaption = "visual"
+        val musicQueueTabCaption = "music"
         val soundcloudTabCaption = "soundcloud"
 
         val controlsAccordion = cp5.addAccordion("controlsAcc")
@@ -103,7 +105,7 @@ object Controls {
                 .setCaptionLabel(controlsTabCaption).captionLabel.font = sliderFont
 
 
-        val soundcloudTracksGroup = cp5.addGroup("soundcloud tracks")
+        val soundcloudTracksGroup = cp5.addGroup("search")
                 .setHeight(25)
                 .setBackgroundHeight(150)
 
@@ -118,7 +120,7 @@ object Controls {
 
 
         cp5.addTextlabel("textfield-label")
-                .setText("Press 'P' to Paste a SoundCloud URL, or Enter One")
+                .setText("Press 'Ctrl+V' to Paste a SoundCloud URL, or Enter One")
                 .setPosition(0f, 10f)
                 .setFont(tabCaptionLabelFont)
                 .moveTo(soundcloudTracksGroup)
@@ -143,7 +145,7 @@ object Controls {
             }
         }
 
-        createButton(soundcloudTracksGroup, "clear-input", 250f, 75f, 120f, 25f).addListener { controlEvent ->
+        createButton(soundcloudTracksGroup, "clear", 250f, 75f, 120f, 25f).addListener { controlEvent ->
             run {
                 synchronized(soundCloudTextField){
                     soundCloudTextField.clear()
@@ -179,7 +181,7 @@ object Controls {
                 .setId(0)
                 .activateEvent(true)
 
-        val musicQueueGroup = cp5.addGroup("music controls")
+        val musicQueueGroup = cp5.addGroup("buttons")
                 .setHeight(25)
                 .setBackgroundHeight(150)
 
@@ -246,7 +248,7 @@ object Controls {
 
         musicQueue = MusicQueue(cp5, "dropdown")
         musicQueue
-                .setLabel("Song Queue")
+                .setLabel("Music Queue")
                 .setPosition(1f, 160f)
                 .setSize(400, 400)
                 .setBarHeight(28)

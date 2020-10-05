@@ -2,7 +2,7 @@ package calebabg.visualizers
 
 import calebabg.abstractions.IVisualization
 import calebabg.main.*
-import calebabg.main.pojo.BassBubble
+import calebabg.pojo.BassBubble
 import processing.core.PApplet
 
 class BubbleBass : IVisualization {

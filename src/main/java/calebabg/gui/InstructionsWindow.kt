@@ -1,6 +1,6 @@
 package calebabg.gui
 
-import calebabg.main.Utils
+import calebabg.helpers.Utils
 import calebabg.main.iconImage
 import java.awt.BorderLayout
 import java.awt.Font

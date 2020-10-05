@@ -1,7 +1,7 @@
 package calebabg.visualizers
 
 import calebabg.abstractions.IVisualization
-import calebabg.main.pojo.Star
+import calebabg.pojo.Star
 import calebabg.main.starCount
 import processing.core.PApplet
 
