@@ -19,7 +19,7 @@ To protect the ```ClientId``` which SoundCloud uses to authenticate requests to 
 ```
 Java JDK + IntelliJ + Kotlin
 ```
-#### The codebase is an IntelliJ IDEA project, so I'd recommend using [IntelliJ IDEA](https://www.jetbrains.com/idea/). This project also uses [Kotlin](https://kotlinlang.org/?fromMenu), which is an incredible language! I'd also recommend using the ```AdoptOpenJDK 12 or higher```: [AdoptOpenJDK - Windows, Mac, Linux](https://adoptopenjdk.net/releases.html?variant=openjdk12&jvmVariant=hotspot)
+#### The codebase is an IntelliJ IDEA project, so I'd recommend using [IntelliJ IDEA](https://www.jetbrains.com/idea/). This project also uses [Kotlin](https://kotlinlang.org/?fromMenu), which is an incredible language! I'd also recommend using the ```AdoptOpenJDK 11 (LTS)```: [AdoptOpenJDK - Windows, Mac, Linux](https://adoptopenjdk.net/releases.html?variant=openjdk11&jvmVariant=hotspot)
 
 ### Project Needed Setup
 
