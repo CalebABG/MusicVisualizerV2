@@ -1,5 +1,5 @@
 .idea/
+.vscode/
 releases/
 target/
-musicvisualizerv2.iml
 /src/main/resources/token.txt
