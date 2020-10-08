@@ -48,8 +48,7 @@ Java JDK + IntelliJ + Kotlin
 
 ### Maven Tools
 - To build the .jar, in the Maven Lifecycle, use the ```package``` command
-- To install any needed dependencies for local .jars (controlp5), use the ```validate``` command
-- To clean the project ('target' in root project dir) use the ```clean``` command
+- To install local needed dependencies for .jars in the ```lib``` folder, and to clean the project ('target' in root project dir) use the ```clean``` command
 
 ---
 
