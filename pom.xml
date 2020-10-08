@@ -114,6 +114,23 @@
                         </goals>
                     </execution>
 
+                    <!--Processing JOGL-Mac v1.2.2-->
+                    <execution>
+                        <id>processing-jogl-mac-jar</id>
+                        <phase>clean</phase>
+                        <configuration>
+                            <groupId>org.processing</groupId>
+                            <artifactId>jogl-mac</artifactId>
+                            <version>2.0</version>
+                            <file>${project.basedir}/lib/jogl-all-natives-macosx-universal.jar</file>
+                            <packaging>jar</packaging>
+                            <generatePom>false</generatePom>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+
                     <!--Processing GlueGen v1.2.2-->
                     <execution>
                         <id>processing-gluegen-jar</id>
@@ -123,6 +140,23 @@
                             <artifactId>gluegen-rt</artifactId>
                             <version>1.2.2</version>
                             <file>${project.basedir}/lib/gluegen-rt.jar</file>
+                            <packaging>jar</packaging>
+                            <generatePom>false</generatePom>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+
+                    <!--Processing GlueGen-Mac v1.2.2-->
+                    <execution>
+                        <id>processing-gluegen-mac-jar</id>
+                        <phase>clean</phase>
+                        <configuration>
+                            <groupId>org.processing</groupId>
+                            <artifactId>gluegen-rt-mac</artifactId>
+                            <version>1.2.2</version>
+                            <file>${project.basedir}/lib/gluegen-rt-natives-macosx-universal.jar</file>
                             <packaging>jar</packaging>
                             <generatePom>false</generatePom>
                         </configuration>
@@ -218,7 +252,19 @@
 
         <dependency>
             <groupId>org.processing</groupId>
+            <artifactId>jogl-mac</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.processing</groupId>
             <artifactId>gluegen-rt</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.processing</groupId>
+            <artifactId>gluegen-rt-mac</artifactId>
             <version>1.2.2</version>
         </dependency>
 

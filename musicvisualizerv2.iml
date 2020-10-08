@@ -139,7 +139,9 @@
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.6" level="project" />
     <orderEntry type="library" name="Maven: org.processing:core:3.5.4" level="project" />
     <orderEntry type="library" name="Maven: org.processing:jogl:2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.processing:jogl-mac:2.0" level="project" />
     <orderEntry type="library" name="Maven: org.processing:gluegen-rt:1.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.processing:gluegen-rt-mac:1.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.processing:apple:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: controlp5:controlp5:2.2.6" level="project" />
   </component>
