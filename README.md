@@ -6,6 +6,12 @@ V2 brings a much better codebase and more ease for addition, and will only impro
 
 ---
 
+## Active/Current Issues
+1. Unfortunately, right now there's an issue with running the ```.jar``` on Mac OSX. When trying to run using JDK 1.8, 11 (LTS), or higher, the application is launched and can be seen in the Dock, and then withing a few seconds it crashes. Once it crashes, it then gives an error window with this or similar message: ```The Java JAR file "Music Visualizer-V2.jar" could not be launched. Check the console for possible error messages.```.
+    - When running the jar from a terminal, the error message is: ```java.lang.NoClassDefFoundError: com/apple/eawt/QuitHandler```
+
+---
+
 ## Releases?
 Yes, yes, I know! Unlike the previous version, for now, V2 releases of the ```.jar``` will be a stand-alone player. SoundCloud integration will be hidden unless a valid SoundCloud ```ClientId``` is set via environment variable. 
 
