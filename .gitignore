@@ -3,3 +3,4 @@
 releases/
 target/
 /src/main/resources/token.txt
+.DS_Store
