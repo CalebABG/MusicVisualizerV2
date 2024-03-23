@@ -31,7 +31,7 @@
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
-                <version>1.4.10</version>
+                <version>1.9.23</version>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -80,14 +80,14 @@
                 <version>2.5.2</version>
                 <executions>
 
-                    <!--Processing Core v3.5.4-->
+                    <!--Processing Core-->
                     <execution>
                         <id>processing-core-jar</id>
                         <phase>clean</phase>
                         <configuration>
                             <groupId>org.processing</groupId>
                             <artifactId>core</artifactId>
-                            <version>3.5.4</version>
+                            <version>4.3.0</version>
                             <file>${project.basedir}/lib/core.jar</file>
                             <packaging>jar</packaging>
                             <generatePom>false</generatePom>
@@ -97,7 +97,7 @@
                         </goals>
                     </execution>
 
-                    <!--Processing JOGL v1.2.2-->
+                    <!--Processing JOGL-->
                     <execution>
                         <id>processing-jogl-jar</id>
                         <phase>clean</phase>
@@ -114,24 +114,7 @@
                         </goals>
                     </execution>
 
-                    <!--Processing JOGL-Mac v1.2.2-->
-                    <execution>
-                        <id>processing-jogl-mac-jar</id>
-                        <phase>clean</phase>
-                        <configuration>
-                            <groupId>org.processing</groupId>
-                            <artifactId>jogl-mac</artifactId>
-                            <version>2.0</version>
-                            <file>${project.basedir}/lib/jogl-all-natives-macosx-universal.jar</file>
-                            <packaging>jar</packaging>
-                            <generatePom>false</generatePom>
-                        </configuration>
-                        <goals>
-                            <goal>install-file</goal>
-                        </goals>
-                    </execution>
-
-                    <!--Processing GlueGen v1.2.2-->
+                    <!--Processing GlueGen-->
                     <execution>
                         <id>processing-gluegen-jar</id>
                         <phase>clean</phase>
@@ -148,15 +131,15 @@
                         </goals>
                     </execution>
 
-                    <!--Processing GlueGen-Mac v1.2.2-->
+                    <!--Processing JNA-->
                     <execution>
-                        <id>processing-gluegen-mac-jar</id>
+                        <id>processing-jna-jar</id>
                         <phase>clean</phase>
                         <configuration>
                             <groupId>org.processing</groupId>
-                            <artifactId>gluegen-rt-mac</artifactId>
-                            <version>1.2.2</version>
-                            <file>${project.basedir}/lib/gluegen-rt-natives-macosx-universal.jar</file>
+                            <artifactId>jna</artifactId>
+                            <version>2.0</version>
+                            <file>${project.basedir}/lib/jna.jar</file>
                             <packaging>jar</packaging>
                             <generatePom>false</generatePom>
                         </configuration>
@@ -165,15 +148,32 @@
                         </goals>
                     </execution>
 
-                    <!--Processing Apple depend v1.0.0-->
+                    <!--Processing JNA Platform-->
                     <execution>
-                        <id>processing-apple-jar</id>
+                        <id>processing-jna-platform-jar</id>
                         <phase>clean</phase>
                         <configuration>
                             <groupId>org.processing</groupId>
-                            <artifactId>apple</artifactId>
+                            <artifactId>jna-platform</artifactId>
+                            <version>2.0</version>
+                            <file>${project.basedir}/lib/jna-platform.jar</file>
+                            <packaging>jar</packaging>
+                            <generatePom>false</generatePom>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                    </execution>
+
+                    <!--Processing PDE-->
+                    <execution>
+                        <id>processing-pde-jar</id>
+                        <phase>clean</phase>
+                        <configuration>
+                            <groupId>org.processing</groupId>
+                            <artifactId>pde</artifactId>
                             <version>1.0.0</version>
-                            <file>${project.basedir}/lib/apple.jar</file>
+                            <file>${project.basedir}/lib/pde.jar</file>
                             <packaging>jar</packaging>
                             <generatePom>false</generatePom>
                         </configuration>
@@ -182,7 +182,7 @@
                         </goals>
                     </execution>
 
-                    <!--Processing ControlP5 v2.2.6-->
+                    <!--Processing ControlP5-->
                     <execution>
                         <id>processing-controlp5-jar</id>
                         <phase>clean</phase>
@@ -207,14 +207,14 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
-            <version>1.4.10</version>
+            <version>1.9.23</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core -->
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>kotlinx-coroutines-core</artifactId>
-            <version>1.3.9</version>
+            <version>1.8.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/net.compartmental.code/minim -->
@@ -228,31 +228,25 @@
         <dependency>
             <groupId>com.konghq</groupId>
             <artifactId>unirest-java</artifactId>
-            <version>3.11.00</version>
+            <version>3.14.5</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.8.6</version>
+            <version>2.10.1</version>
         </dependency>
 
         <dependency>
             <groupId>org.processing</groupId>
             <artifactId>core</artifactId>
-            <version>3.5.4</version>
+            <version>4.3.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.processing</groupId>
             <artifactId>jogl</artifactId>
-            <version>2.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.processing</groupId>
-            <artifactId>jogl-mac</artifactId>
             <version>2.0</version>
         </dependency>
 
@@ -264,13 +258,19 @@
 
         <dependency>
             <groupId>org.processing</groupId>
-            <artifactId>gluegen-rt-mac</artifactId>
-            <version>1.2.2</version>
+            <artifactId>jna</artifactId>
+            <version>2.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.processing</groupId>
-            <artifactId>apple</artifactId>
+            <artifactId>jna-platform</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.processing</groupId>
+            <artifactId>pde</artifactId>
             <version>1.0.0</version>
         </dependency>
 
